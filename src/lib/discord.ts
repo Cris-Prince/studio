@@ -6,7 +6,43 @@ async function getCommands() {
     return [
         {
             name: 'ping',
-            description: 'Replies with Pong!',
+            description: '¡Responde con Pong!',
+        },
+        {
+            name: 'ban',
+            description: 'Banea a un usuario del servidor.',
+            options: [
+                {
+                    name: 'usuario',
+                    description: 'El usuario a banear.',
+                    type: 6, // USER
+                    required: true,
+                },
+                {
+                    name: 'razon',
+                    description: 'La razón del baneo.',
+                    type: 3, // STRING
+                    required: false,
+                },
+            ],
+        },
+        {
+            name: 'kick',
+            description: 'Expulsa a un usuario del servidor.',
+            options: [
+                {
+                    name: 'usuario',
+                    description: 'El usuario a expulsar.',
+                    type: 6, // USER
+                    required: true,
+                },
+                {
+                    name: 'razon',
+                    description: 'La razón de la expulsión.',
+                    type: 3, // STRING
+                    required: false,
+                },
+            ],
         },
     ];
 }

@@ -20,13 +20,13 @@ export function DeployManager() {
             setResult(deploymentResult);
             if (deploymentResult.error) {
                 toast({
-                    title: "Deployment Failed",
+                    title: "Fallo en el Despliegue",
                     description: deploymentResult.error,
                     variant: "destructive",
                 });
             } else {
                  toast({
-                    title: "Deployment Successful",
+                    title: "Despliegue Exitoso",
                     description: deploymentResult.success,
                 });
             }
@@ -35,32 +35,32 @@ export function DeployManager() {
 
     return (
         <section>
-            <h2 className="text-2xl font-bold font-headline mb-4">Deployment Control</h2>
+            <h2 className="text-2xl font-bold font-headline mb-4">Control de Despliegue</h2>
             <Card>
                 <CardHeader>
-                    <CardTitle className="flex items-center gap-2"><Rocket /> Deploy Commands</CardTitle>
+                    <CardTitle className="flex items-center gap-2"><Rocket /> Desplegar Comandos</CardTitle>
                     <CardDescription>
-                        Register or update your bot's slash commands on Discord.
+                        Registra o actualiza los comandos slash de tu bot en Discord.
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
                     <div className="flex flex-col gap-4">
                         <p className="text-sm text-muted-foreground">
-                            Click the button below to deploy your slash commands. This will make them available for users on Discord. Ensure your `CLIENT_ID` and `DISCORD_TOKEN` are set correctly in your environment.
+                            Haz clic en el botón de abajo para desplegar tus comandos slash. Esto los hará disponibles para los usuarios en Discord. Asegúrate de que tu `CLIENT_ID` y `DISCORD_TOKEN` están configurados correctamente en tu entorno.
                         </p>
                         <form action={onDeploy}>
                             <Button type="submit" disabled={isPending} className="w-full">
                                 {isPending ? (
-                                    <><Rocket className="mr-2 h-4 w-4 animate-spin" /> Deploying...</>
+                                    <><Rocket className="mr-2 h-4 w-4 animate-spin" /> Desplegando...</>
                                 ) : (
-                                    <><Rocket className="mr-2 h-4 w-4" /> Deploy Slash Commands</>
+                                    <><Rocket className="mr-2 h-4 w-4" /> Desplegar Comandos Slash</>
                                 )}
                             </Button>
                         </form>
                         {result && !isPending && (
                              <Alert variant={result.error ? 'destructive' : 'default'} className={result.success ? "border-green-500/50 text-green-700 dark:text-green-400 dark:border-green-500/50" : ""}>
                                 {result.success ? <CheckCircle2 className="h-4 w-4" /> : <AlertTriangle className="h-4 w-4" />}
-                                <AlertTitle>{result.success ? 'Success' : 'Error'}</AlertTitle>
+                                <AlertTitle>{result.success ? 'Éxito' : 'Error'}</AlertTitle>
                                 <AlertDescription>
                                     {result.success || result.error}
                                 </AlertDescription>

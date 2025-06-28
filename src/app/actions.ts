@@ -19,15 +19,15 @@ export async function handleSuggestImprovements(formData: FormData) {
   const validatedData = improveCodeSchema.safeParse(rawData);
 
   if (!validatedData.success) {
-    return { error: 'Invalid input.' };
+    return { error: 'Entrada inválida.' };
   }
 
   try {
     const result = await suggestCodeImprovements(validatedData.data);
     return { improvements: result.improvements };
   } catch (e) {
-    const message = e instanceof Error ? e.message : 'An unknown error occurred.';
-    return { error: `Failed to get suggestions from AI: ${message}` };
+    const message = e instanceof Error ? e.message : 'Ocurrió un error desconocido.';
+    return { error: `Fallo al obtener sugerencias de la IA: ${message}` };
   }
 }
 
@@ -43,24 +43,24 @@ export async function handleGenerateDescription(formData: FormData) {
   const validatedData = generateDescriptionSchema.safeParse(rawData);
 
   if (!validatedData.success) {
-    return { error: 'Invalid input.' };
+    return { error: 'Entrada inválida.' };
   }
 
   try {
     const result = await generateCommandDescriptions(validatedData.data);
     return { description: result.description };
   } catch (e) {
-     const message = e instanceof Error ? e.message : 'An unknown error occurred.';
-    return { error: `Failed to get description from AI: ${message}` };
+     const message = e instanceof Error ? e.message : 'Ocurrió un error desconocido.';
+    return { error: `Fallo al obtener la descripción de la IA: ${message}` };
   }
 }
 
 export async function handleDeployCommands() {
   try {
     await deploySlashCommands();
-    return { success: 'Commands deployed successfully!' };
+    return { success: '¡Comandos desplegados exitosamente!' };
   } catch (e) {
-    const message = e instanceof Error ? e.message : 'An unknown error occurred.';
-    return { error: `Failed to deploy commands: ${message}` };
+    const message = e instanceof Error ? e.message : 'Ocurrió un error desconocido.';
+    return { error: `Fallo al desplegar comandos: ${message}` };
   }
 }

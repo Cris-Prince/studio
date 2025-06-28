@@ -8,15 +8,26 @@ import { DeployManager } from '@/components/deploy-manager';
 import { BotRunner } from '@/components/bot-runner';
 
 export default async function Home() {
-  const [indexJsContent, pingJsContent, readyJsContent, packageJsonContent] = await Promise.all([
+  const [
+    indexJsContent,
+    pingJsContent,
+    banJsContent,
+    kickJsContent,
+    readyJsContent,
+    packageJsonContent,
+  ] = await Promise.all([
     getFileContent('index.js'),
     getFileContent('comandos/ping.js'),
+    getFileContent('comandos/ban.js'),
+    getFileContent('comandos/kick.js'),
     getFileContent('eventos/ready.js'),
     getFileContent('package.json'),
   ]);
 
   const commands = [
     { name: 'ping', code: pingJsContent },
+    { name: 'ban', code: banJsContent },
+    { name: 'kick', code: kickJsContent },
   ];
 
   const files = [
