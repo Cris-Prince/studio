@@ -3,6 +3,7 @@
 import { suggestCodeImprovements } from '@/ai/flows/suggest-code-improvements';
 import { generateCommandDescriptions } from '@/ai/flows/generate-command-descriptions';
 import { z } from 'zod';
+import { deploySlashCommands } from '@/lib/discord';
 
 const improveCodeSchema = z.object({
   code: z.string(),
@@ -51,5 +52,15 @@ export async function handleGenerateDescription(formData: FormData) {
   } catch (e) {
      const message = e instanceof Error ? e.message : 'An unknown error occurred.';
     return { error: `Failed to get description from AI: ${message}` };
+  }
+}
+
+export async function handleDeployCommands() {
+  try {
+    await deploySlashCommands();
+    return { success: 'Commands deployed successfully!' };
+  } catch (e) {
+    const message = e instanceof Error ? e.message : 'An unknown error occurred.';
+    return { error: `Failed to deploy commands: ${message}` };
   }
 }
