@@ -24,6 +24,20 @@ export default async function Home() {
     { name: 'eventos/ready.js', code: readyJsContent },
   ]
 
+  let startCommand = "npm start";
+  try {
+    const pkg = JSON.parse(packageJsonContent);
+    // Use `npm start` if available, otherwise fallback to `node .`
+    if (pkg.scripts && pkg.scripts.start) {
+      startCommand = "npm start";
+    } else {
+      startCommand = "node .";
+    }
+  } catch (e) {
+    // Silently ignore parsing errors and use the default
+    console.error("Could not parse package.json from GitHub", e);
+  }
+
   return (
     <main>
       <div className="container mx-auto px-4 py-8 md:px-6 md:py-12">
@@ -32,9 +46,9 @@ export default async function Home() {
           description="Your AI-powered assistant to deploy, manage, and improve your Discord.js bot."
         />
         <div className="flex flex-col gap-12 mt-8">
-          <SetupGuide packageJson={packageJsonContent} />
+          <SetupGuide startCommand={startCommand} />
           <Separator />
-          <BotRunner />
+          <BotRunner startCommand={startCommand} />
           <Separator />
           <DeployManager />
           <Separator />

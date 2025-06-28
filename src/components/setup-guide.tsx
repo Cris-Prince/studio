@@ -3,22 +3,10 @@ import { CheckCircle2, Terminal } from "lucide-react";
 import { CodeBlock } from "./code-block";
 
 interface SetupGuideProps {
-  packageJson: string;
+  startCommand: string;
 }
 
-export function SetupGuide({ packageJson }: SetupGuideProps) {
-  let startCommand = "npm start";
-  try {
-    const pkg = JSON.parse(packageJson);
-    if (pkg.scripts && pkg.scripts.start) {
-      startCommand = "npm start";
-    } else {
-      startCommand = "node .";
-    }
-  } catch (e) {
-    startCommand = "npm start";
-  }
-
+export function SetupGuide({ startCommand }: SetupGuideProps) {
   const steps = [
     {
       title: "1. Clone Repository",

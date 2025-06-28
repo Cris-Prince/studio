@@ -15,9 +15,11 @@ import {
 } from "@/components/ui/alert-dialog"
 import { CodeBlock } from './code-block';
 
-export function BotRunner() {
-  const startCommand = "npm start"; 
+interface BotRunnerProps {
+  startCommand: string;
+}
 
+export function BotRunner({ startCommand }: BotRunnerProps) {
   return (
     <section>
       <h2 className="text-2xl font-bold font-headline mb-4">Bot Control</h2>
