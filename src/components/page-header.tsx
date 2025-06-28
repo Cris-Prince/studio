@@ -2,7 +2,6 @@
 
 import { Bot } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { useState } from "react";
 
 interface PageHeaderProps {
   title: string;
@@ -10,7 +9,9 @@ interface PageHeaderProps {
 }
 
 export function PageHeader({ title, description }: PageHeaderProps) {
-  const [isBotOnline, setIsBotOnline] = useState(false);
+  // This is a static indicator. The user must start their bot externally.
+  // We assume it's offline by default in this dashboard.
+  const isBotOnline = false;
 
   return (
     <header className="space-y-4">
@@ -23,8 +24,8 @@ export function PageHeader({ title, description }: PageHeaderProps) {
             {title}
           </h1>
         </div>
-        <div className="flex items-center gap-2 cursor-pointer select-none" onClick={() => setIsBotOnline(!isBotOnline)}>
-          <div className={`w-3 h-3 rounded-full transition-colors ${isBotOnline ? 'bg-accent animate-pulse' : 'bg-destructive'}`}></div>
+        <div className="flex items-center gap-2">
+          <div className={`w-3 h-3 rounded-full transition-colors ${isBotOnline ? 'bg-accent' : 'bg-destructive'}`}></div>
           <Badge variant={isBotOnline ? "outline" : "destructive"} className={isBotOnline ? 'bg-accent/20 text-accent border-accent/50' : ''}>
             {isBotOnline ? 'Bot Online' : 'Bot Offline'}
           </Badge>

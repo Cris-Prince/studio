@@ -5,6 +5,7 @@ import { CommandManager } from '@/components/command-manager';
 import { getFileContent } from '@/lib/github';
 import { Separator } from '@/components/ui/separator';
 import { DeployManager } from '@/components/deploy-manager';
+import { BotRunner } from '@/components/bot-runner';
 
 export default async function Home() {
   const [indexJsContent, pingJsContent, readyJsContent, packageJsonContent] = await Promise.all([
@@ -32,6 +33,8 @@ export default async function Home() {
         />
         <div className="flex flex-col gap-12 mt-8">
           <SetupGuide packageJson={packageJsonContent} />
+          <Separator />
+          <BotRunner />
           <Separator />
           <DeployManager />
           <Separator />
