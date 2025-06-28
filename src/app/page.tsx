@@ -53,8 +53,8 @@ export default async function Home() {
     <main>
       <div className="container mx-auto px-4 py-8 md:px-6 md:py-12">
         <PageHeader
-          title="Discordian Deploy Enhanced"
-          description="Your AI-powered assistant to deploy, manage, and improve your Discord.js bot."
+          title="Panel de Control del Bot"
+          description="Tu asistente con IA para desplegar, gestionar y mejorar tu bot de Discord.js."
         />
         <div className="flex flex-col gap-12 mt-8">
           <SetupGuide startCommand={startCommand} />

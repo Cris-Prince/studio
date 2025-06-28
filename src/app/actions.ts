@@ -19,15 +19,15 @@ export async function handleSuggestImprovements(formData: FormData) {
   const validatedData = improveCodeSchema.safeParse(rawData);
 
   if (!validatedData.success) {
-    return { error: 'Entrada inválida.' };
+    return { error: 'Entrada de datos inválida.' };
   }
 
   try {
-    const result = await suggestCodeImprovements(validatedData.data);
+    const result = await suggestCodeimprovements(validatedData.data);
     return { improvements: result.improvements };
   } catch (e) {
     const message = e instanceof Error ? e.message : 'Ocurrió un error desconocido.';
-    return { error: `Fallo al obtener sugerencias de la IA: ${message}` };
+    return { error: `Error al obtener sugerencias: ${message}` };
   }
 }
 
@@ -43,7 +43,7 @@ export async function handleGenerateDescription(formData: FormData) {
   const validatedData = generateDescriptionSchema.safeParse(rawData);
 
   if (!validatedData.success) {
-    return { error: 'Entrada inválida.' };
+    return { error: 'Entrada de datos inválida.' };
   }
 
   try {
@@ -51,7 +51,7 @@ export async function handleGenerateDescription(formData: FormData) {
     return { description: result.description };
   } catch (e) {
      const message = e instanceof Error ? e.message : 'Ocurrió un error desconocido.';
-    return { error: `Fallo al obtener la descripción de la IA: ${message}` };
+    return { error: `Error al generar la descripción: ${message}` };
   }
 }
 

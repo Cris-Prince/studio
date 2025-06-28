@@ -14,12 +14,12 @@ interface CodeAnalyzerProps {
   files: { name: string; code: string }[];
 }
 
-const BEST_PRACTICES = `- Use environment variables for sensitive data like tokens.
-- Implement proper error handling for async operations.
-- Structure your code into modules (commands, events, etc.).
-- Use a command handler to manage commands dynamically.
-- Avoid using deprecated methods from Discord.js.
-- Ensure all user inputs are validated and sanitized.`;
+const BEST_PRACTICES = `- Usa variables de entorno para datos sensibles como tokens.
+- Implementa un manejo de errores adecuado para operaciones asíncronas.
+- Estructura tu código en módulos (comandos, eventos, etc.).
+- Usa un manejador de comandos para gestionarlos dinámicamente.
+- Evita usar métodos obsoletos de Discord.js.
+- Asegúrate de que todas las entradas de usuario sean validadas y sanitizadas.`;
 
 export function CodeAnalyzer({ files }: CodeAnalyzerProps) {
   const [improvements, setImprovements] = useState('');
@@ -34,13 +34,13 @@ export function CodeAnalyzer({ files }: CodeAnalyzerProps) {
       const result = await handleSuggestImprovements(formData);
       if (result.error) {
         toast({
-          title: "Analysis Failed",
+          title: "Análisis Fallido",
           description: result.error,
           variant: "destructive",
         });
         setImprovements('');
       } else {
-        setImprovements(result.improvements || 'No suggestions available.');
+        setImprovements(result.improvements || 'No hay sugerencias disponibles.');
       }
     });
   };
@@ -49,12 +49,12 @@ export function CodeAnalyzer({ files }: CodeAnalyzerProps) {
 
   return (
     <section>
-       <h2 className="text-2xl font-bold font-headline mb-4">Code Quality Analysis</h2>
+       <h2 className="text-2xl font-bold font-headline mb-4">Análisis de Calidad de Código</h2>
       <div className="grid md:grid-cols-2 gap-6 items-start">
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2"><FileCode /> Bot Source Code</CardTitle>
-            <CardDescription>Review the bot's code and get AI-powered improvement suggestions.</CardDescription>
+            <CardTitle className="flex items-center gap-2"><FileCode /> Código Fuente del Bot</CardTitle>
+            <CardDescription>Revisa el código de tu bot y obtén sugerencias de mejora con IA.</CardDescription>
           </CardHeader>
           <CardContent>
             <Tabs value={selectedFile} onValueChange={setSelectedFile} className="w-full">
@@ -74,7 +74,7 @@ export function CodeAnalyzer({ files }: CodeAnalyzerProps) {
 
             <Card className="mt-4 bg-card/50">
               <CardHeader>
-                <CardTitle className="text-base">Best Practices Checklist</CardTitle>
+                <CardTitle className="text-base">Lista de Mejores Prácticas</CardTitle>
               </CardHeader>
               <CardContent>
                 <pre className="text-sm text-muted-foreground whitespace-pre-wrap font-sans">{BEST_PRACTICES}</pre>
@@ -86,9 +86,9 @@ export function CodeAnalyzer({ files }: CodeAnalyzerProps) {
               <input type="hidden" name="bestPractices" value={BEST_PRACTICES} />
               <Button type="submit" disabled={isPending} className="w-full">
                 {isPending ? (
-                  <><Sparkles className="mr-2 h-4 w-4 animate-spin" /> Analyzing...</>
+                  <><Sparkles className="mr-2 h-4 w-4 animate-spin" /> Analizando...</>
                 ) : (
-                  <><Wand2 className="mr-2 h-4 w-4" /> Suggest Improvements</>
+                  <><Wand2 className="mr-2 h-4 w-4" /> Sugerir Mejoras</>
                 )}
               </Button>
             </form>
@@ -98,8 +98,8 @@ export function CodeAnalyzer({ files }: CodeAnalyzerProps) {
         <div className="sticky top-4">
           <Card className="min-h-[30rem]">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2"><Sparkles className="text-accent"/> Improvement Suggestions</CardTitle>
-              <CardDescription>Our AI has analyzed your code. Here's what it found.</CardDescription>
+              <CardTitle className="flex items-center gap-2"><Sparkles className="text-accent"/> Sugerencias de Mejora</CardTitle>
+              <CardDescription>Nuestra IA ha analizado tu código. Esto es lo que encontró.</CardDescription>
             </CardHeader>
             <CardContent>
               {isPending && (
@@ -110,7 +110,7 @@ export function CodeAnalyzer({ files }: CodeAnalyzerProps) {
               {improvements && !isPending && (
                 <Alert className="bg-background">
                   <Wand2 className="h-4 w-4" />
-                  <AlertTitle>Analysis Complete</AlertTitle>
+                  <AlertTitle>Análisis Completo</AlertTitle>
                   <AlertDescription className="mt-2 whitespace-pre-wrap font-mono text-sm leading-relaxed">
                     {improvements}
                   </AlertDescription>
@@ -118,7 +118,7 @@ export function CodeAnalyzer({ files }: CodeAnalyzerProps) {
               )}
               {!improvements && !isPending && (
                 <div className="text-center text-muted-foreground py-10 px-4">
-                  <p>Click "Suggest Improvements" to analyze the selected code file.</p>
+                  <p>Haz clic en "Sugerir Mejoras" para analizar el archivo de código seleccionado.</p>
                 </div>
               )}
             </CardContent>

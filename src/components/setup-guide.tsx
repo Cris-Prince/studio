@@ -9,25 +9,25 @@ interface SetupGuideProps {
 export function SetupGuide({ startCommand }: SetupGuideProps) {
   const steps = [
     {
-      title: "1. Clone Repository",
-      description: "Get the bot's source code onto your local machine.",
+      title: "1. Clonar Repositorio",
+      description: "Obtén el código fuente del bot en tu máquina local.",
       command: "gh repo clone Dsc-Bots/PruebaBot",
     },
     {
-      title: "2. Install Dependencies",
-      description: "Install all the necessary packages for the bot to run.",
+      title: "2. Instalar Dependencias",
+      description: "Instala todos los paquetes necesarios para que el bot funcione.",
       command: "npm install",
     },
     {
-      title: "3. Start the Bot",
-      description: "Run the bot and bring it online.",
+      title: "3. Iniciar el Bot",
+      description: "Ejecuta el bot para ponerlo en línea.",
       command: startCommand,
     },
   ];
 
   return (
     <section>
-      <h2 className="text-2xl font-bold font-headline mb-4">Quick Setup Guide</h2>
+      <h2 className="text-2xl font-bold font-headline mb-4">Guía de Configuración Rápida</h2>
       <div className="grid md:grid-cols-3 gap-6">
         {steps.map((step, index) => (
           <Card key={index} className="flex flex-col bg-card/50 hover:bg-card transition-colors">
@@ -48,7 +48,7 @@ export function SetupGuide({ startCommand }: SetupGuideProps) {
       </div>
       <div className="mt-6 text-center text-accent flex items-center justify-center gap-2">
         <CheckCircle2 className="h-5 w-5" />
-        <p>Follow these steps in your terminal to get started.</p>
+        <p>Sigue estos pasos en tu terminal para comenzar.</p>
       </div>
     </section>
   );

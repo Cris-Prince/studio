@@ -35,12 +35,12 @@ export function CommandManager({ commands }: CommandManagerProps) {
       const result = await handleGenerateDescription(formData);
       if (result.error) {
         toast({
-          title: "La Generación Falló",
+          title: "Generación Fallida",
           description: result.error,
           variant: "destructive",
         });
       } else {
-        setDescriptions(prev => ({ ...prev, [commandName]: result.description || 'No se generó ninguna descripción.' }));
+        setDescriptions(prev => ({ ...prev, [commandName]: result.description || 'No se pudo generar una descripción.' }));
       }
       setPendingCommand(null);
     });

@@ -27,7 +27,7 @@ export function PageHeader({ title, description }: PageHeaderProps) {
         <div className="flex items-center gap-2">
           <div className={`w-3 h-3 rounded-full transition-colors ${isBotOnline ? 'bg-accent' : 'bg-destructive'}`}></div>
           <Badge variant={isBotOnline ? "outline" : "destructive"} className={isBotOnline ? 'bg-accent/20 text-accent border-accent/50' : ''}>
-            {isBotOnline ? 'Bot Online' : 'Bot Offline'}
+            {isBotOnline ? 'Bot Conectado' : 'Bot Desconectado'}
           </Badge>
         </div>
       </div>

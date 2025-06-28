@@ -52,7 +52,7 @@ export async function deploySlashCommands() {
     const token = process.env.DISCORD_TOKEN;
 
     if (!clientId || !token) {
-        throw new Error('Missing CLIENT_ID or DISCORD_TOKEN in .env file');
+        throw new Error('Faltan las variables CLIENT_ID o DISCORD_TOKEN en el archivo .env');
     }
 
     const commands = await getCommands();
